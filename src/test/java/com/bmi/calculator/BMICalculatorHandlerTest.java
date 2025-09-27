@@ -1,19 +1,13 @@
 package com.bmi.calculator;
 
-import com.amazonaws.services.lambda.runtime.Context;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class BMICalculatorHandlerTest {
-
-    @Mock
-    private Context context;
 
     private BMICalculatorHandler handler;
 
@@ -26,7 +20,7 @@ class BMICalculatorHandlerTest {
     void testValidBMICalculation() {
         // Test case for normal weight
         BMIRequest request = new BMIRequest(170, 70); // 170cm, 70kg
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNull(response.getError());
