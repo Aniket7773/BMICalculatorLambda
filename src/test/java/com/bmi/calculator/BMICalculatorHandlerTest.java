@@ -5,26 +5,23 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.amazonaws.services.lambda.runtime.Context;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class BMICalculatorHandlerTest {
 
     private BMICalculatorHandler handler;
-    private Context context;
 
     @BeforeEach
     void setUp() {
         handler = new BMICalculatorHandler();
-        context = new TestContext();
     }
 
     @Test
     void testValidBMICalculation() {
         // Test case for normal weight
         BMIRequest request = new BMIRequest(170, 70); // 170cm, 70kg
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNull(response.getError());
@@ -36,7 +33,7 @@ public class BMICalculatorHandlerTest {
     @Test
     void testUnderweightBMICalculation() {
         BMIRequest request = new BMIRequest(170, 50); // 170cm, 50kg
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNull(response.getError());
@@ -47,7 +44,7 @@ public class BMICalculatorHandlerTest {
     @Test
     void testOverweightBMICalculation() {
         BMIRequest request = new BMIRequest(170, 80); // 170cm, 80kg
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNull(response.getError());
