@@ -6,6 +6,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * BMI Calculator Lambda Handler
+ * Calculates BMI and categorizes it according to WHO standards:
+ * - Underweight: < 18.5
+ * - Normal weight: 18.5 - 24.9
+ * - Overweight: 25 - 29.9
+ * - Obese: ≥ 30
+ */
 public class BMICalculatorHandler implements RequestHandler<BMIRequest, BMIResponse> {
     private static final Logger logger = LoggerFactory.getLogger(BMICalculatorHandler.class);
     private final ObjectMapper objectMapper = new ObjectMapper();

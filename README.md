@@ -1,6 +1,6 @@
 # BMI Calculator Lambda Service
 
-This is an AWS Lambda service that calculates Body Mass Index (BMI) based on height and weight inputs.
+This is an AWS Lambda service that calculates Body Mass Index (BMI) based on height and weight inputs. The service provides accurate BMI calculations and categorization following WHO standards.
 
 ## Project Structure
 
