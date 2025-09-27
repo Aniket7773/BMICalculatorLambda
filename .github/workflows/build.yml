@@ -17,8 +17,9 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
-        cache: maven
+        distribution: 'adopt'
+        cache: 'maven'
+        java-package: 'jdk'
 
     - name: Cache Maven packages
       uses: actions/cache@v3
@@ -34,13 +35,15 @@ jobs:
 
     - name: Upload Test Results
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results
         path: target/surefire-reports
+        retention-days: 5
 
     - name: Upload JAR
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: bmi-calculator-lambda
         path: target/bmi-calculator-lambda-*.jar
+        retention-days: 5
