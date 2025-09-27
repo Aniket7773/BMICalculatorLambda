@@ -1,6 +1,7 @@
 package com.bmi.calculator;
 
-import org.junit.jupiter.api.BeforeEach;
+im        BMIRequest request = new BMIRequest(170, 70); // 170cm, 70kg
+        BMIResponse response = handler.calculateBMI(request);rt org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
