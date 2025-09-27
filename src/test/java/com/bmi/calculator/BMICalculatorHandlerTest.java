@@ -55,7 +55,7 @@ public class BMICalculatorHandlerTest {
     @Test
     void testObeseBMICalculation() {
         BMIRequest request = new BMIRequest(170, 100); // 170cm, 100kg
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNull(response.getError());
@@ -66,7 +66,7 @@ public class BMICalculatorHandlerTest {
     @Test
     void testInvalidHeight() {
         BMIRequest request = new BMIRequest(0, 70);
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNotNull(response.getError());
@@ -76,7 +76,7 @@ public class BMICalculatorHandlerTest {
     @Test
     void testInvalidWeight() {
         BMIRequest request = new BMIRequest(170, -1);
-        BMIResponse response = handler.handleRequest(request, context);
+        BMIResponse response = handler.calculateBMI(request);
 
         assertNotNull(response);
         assertNotNull(response.getError());
@@ -85,7 +85,7 @@ public class BMICalculatorHandlerTest {
 
     @Test
     void testNullRequest() {
-        BMIResponse response = handler.handleRequest(null, context);
+        BMIResponse response = handler.calculateBMI(null);
 
         assertNotNull(response);
         assertNotNull(response.getError());
