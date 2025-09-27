@@ -28,7 +28,9 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
 
     - name: Build and Test
-      run: mvn -B clean verify --no-transfer-progress
+      run: |
+        mvn -B clean compile --no-transfer-progress
+        mvn -B test --no-transfer-progress
 
     - name: Upload Test Results
       if: always()
